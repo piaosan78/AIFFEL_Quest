@@ -1,47 +1,60 @@
 # AIFFEL Campus Online 5th Code Peer Review Templete
-- 코더 : 코더 1인의 이름을 작성하세요.
-- 리뷰어 : 본인의 이름을 작성하세요.
-
+- 코더 : 박영준
+- 리뷰어 : 김소연
 
 # PRT(PeerReviewTemplate) 
 각 항목을 스스로 확인하고 토의하여 작성한 코드에 적용합니다.
 
 - [X] 코드가 정상적으로 동작하고 주어진 문제를 해결했나요?
   
-- [ ] 주석을 보고 작성자의 코드가 이해되었나요?
-  > 위 항목에 대한 근거 작성 필수
-- [ ] 코드가 에러를 유발할 가능성이 없나요?
-  >위 항목에 대한 근거 작성 필수
-- [ ] 코드 작성자가 코드를 제대로 이해하고 작성했나요?
-  > 위 항목에 대한 근거 작성 필수
-- [ ] 코드가 간결한가요?
-  > 위 항목에 대한 근거 작성 필수
+- [X] 주석을 보고 작성자의 코드가 이해되었나요?
+  > 각 코드마다 주석이 잘 작성되어 있어서 실행과정이 잘 이해되었습니다.
+- [X] 코드가 에러를 유발할 가능성이 없나요?
+  >마지막 counter 클래스를 사용해서 전체 2-gram의 빈도수를 출력하는 부분 외에 텍스트 전처리, 2gram생성, 빈도 계산 등 단계가 명확하게 구분되어 있습니다.
+- [X] 코드 작성자가 코드를 제대로 이해하고 작성했나요?
+  > 코드의 작성과정을 잘 설명해주셨습다.
+- [X] 코드가 간결한가요?
+  > counter클래스를 사용해서 빈도를 계산하고 가장 빈도가 높은 2gram찾는 등 기능이 간결하게 구현되어 있습니다.
 
 # 예시
-1. 코드의 작동 방식을 주석으로 기록합니다.
-2. 코드의 작동 방식에 대한 개선 방법을 주석으로 기록합니다.
-3. 참고한 링크 및 ChatGPT 프롬프트 명령어가 있다면 주석으로 남겨주세요.
 ```python
-# 사칙 연산 계산기
-class calculator:
-    # 예) init의 역할과 각 매서드의 의미를 서술
-    def __init__(self, first, second):
-        self.first = first
-        self.second = second
-    
-    # 예) 덧셈과 연산 작동 방식에 대한 서술
-    def add(self):
-        result = self.first + self.second
-        return result
+from collections import Counter
+from google.colab import drive                 #코랩을 통해 구글 드라이브 활용
+import re
+#1. 스크립트 파일 읽기
+drive.mount('/content/drive')
 
-a = float(input('첫번째 값을 입력하세요.')) 
-b = float(input('두번째 값을 입력하세요.')) 
-c = calculator(a, b)
-print('덧셈', c.add()) 
+with open('/content/06TheAvengers.txt') as f:
+    script = f.read()
+
+#2. 스크립트 파일내 텍스트 소문자화로 재정의
+script = script.lower()
+
+#3. 스크립트 파일 기호 제거
+#symbols = ['.', ',', '!', '?', "'", '"', '~', '-', "\" ]
+#for symbol in symbols:
+#    script = script.replace(symbol, '')
+
+script = re.sub('[^a-zA-Z\s]', '', script)
+
+#4. 스크립트 파일 단어별 분류
+words = script.split()
+
+#5. 스크립트 파일 단어 기준 2-gram 생성
+ngrams = zip(words, words[1:])
+
+#6. 2-gram 빈도 계산
+countdict = Counter(ngrams)
+
+#7. 가장 빈도가 높은 2-gram 찾기
+max2gram = max(countdict, key=countdict.get)
+
+#8. 결과 출력
+print(max2gram, countdict[max2gram])
+print(Counter(countdict))
 ```
 
 # 참고 링크 및 코드 개선
 ```python
-# 코드 리뷰 시 참고한 링크가 있다면 링크와 간략한 설명을 첨부합니다.
-# 코드 리뷰를 통해 개선한 코드가 있다면 코드와 간략한 설명을 첨부합니다.
+
 ```
