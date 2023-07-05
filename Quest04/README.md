@@ -23,13 +23,15 @@
 3. 참고한 링크 및 ChatGPT 프롬프트 명령어가 있다면 주석으로 남겨주세요.
 
 # 물고기 리스트를 생성한다.
-`fish_list = [
+
+```fish_list = [
     {'이름': 'Nemo', 'speed': 3},
     {'이름': 'Dory', 'speed': 5},
-]`
+]```
 물고기들의 정보를 담고 있는 리스트를 생성한다.
 
 # 컴프리헨션을 사용하여 출력값을 입력한다.
+
 ```def show_fish_movement_comprehension(fish_list):
   #fish list에 있는  키, 밸류 값을 튜플 형식으로 저장
     출력값 = [(fish['이름'],fish['speed']) for fish in fish_list]
@@ -39,8 +41,10 @@
       print(name,'is swimming at',speed, 'm/s')
       #프린트를 한 후 2초를 정지
       t.sleep(2)```
+
 # 제너레이터를 사용값을 출력한다.
-def show_fish_movement_Generator(fish_list):
+
+```def show_fish_movement_Generator(fish_list):
   #newlist로 입력 변수값 저장
     newlist = fish_list
     #yield값을 얻어낼 generator 함수
@@ -52,11 +56,13 @@ def show_fish_movement_Generator(fish_list):
     #generator가 진행 되는 동한 값을 출력
     for i in generator(newlist):
         print(next(a))
-        t.sleep(2)
+        t.sleep(2)```
+
 # 출력
-print("Using Comprehension:")
+
+```print("Using Comprehension:")
 show_fish_movement_comprehension(fish_list)
 print("Using Generator:")
-show_fish_movement_Generator(fish_list)
+show_fish_movement_Generator(fish_list)```
 
 
