@@ -27,7 +27,7 @@
 ```fish_list = [
     {'이름': 'Nemo', 'speed': 3},
     {'이름': 'Dory', 'speed': 5},
-]```
+]
 물고기들의 정보를 담고 있는 리스트를 생성한다.
 
 # 컴프리헨션을 사용하여 출력값을 입력한다.
@@ -40,7 +40,7 @@
       #각 반복되는 변수들을 밑에 형식으로 출력
       print(name,'is swimming at',speed, 'm/s')
       #프린트를 한 후 2초를 정지
-      t.sleep(2)```
+      t.sleep(2)
 
 # 제너레이터를 사용값을 출력한다.
 
@@ -56,13 +56,13 @@
     #generator가 진행 되는 동한 값을 출력
     for i in generator(newlist):
         print(next(a))
-        t.sleep(2)```
+        t.sleep(2)
 
 # 출력
 
 ```print("Using Comprehension:")
 show_fish_movement_comprehension(fish_list)
 print("Using Generator:")
-show_fish_movement_Generator(fish_list)```
+show_fish_movement_Generator(fish_list)
 
 
