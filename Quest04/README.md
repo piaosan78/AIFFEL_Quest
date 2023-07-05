@@ -24,15 +24,15 @@
 
 # 물고기 리스트를 생성한다.
 
-```fish_list = [
+fish_list = [
     {'이름': 'Nemo', 'speed': 3},
     {'이름': 'Dory', 'speed': 5},
 ]
 물고기들의 정보를 담고 있는 리스트를 생성한다.
 
-# 컴프리헨션을 사용하여 출력값을 입력한다.
+# 물고기 리스트생성
 
-```def show_fish_movement_comprehension(fish_list):
+def show_fish_movement_comprehension(fish_list):
   #fish list에 있는  키, 밸류 값을 튜플 형식으로 저장
     출력값 = [(fish['이름'],fish['speed']) for fish in fish_list]
     #출력값에서 name speed 의 변수로 for 반복문
@@ -44,7 +44,7 @@
 
 # 제너레이터를 사용값을 출력한다.
 
-```def show_fish_movement_Generator(fish_list):
+def show_fish_movement_Generator(fish_list):
   #newlist로 입력 변수값 저장
     newlist = fish_list
     #yield값을 얻어낼 generator 함수
@@ -57,6 +57,7 @@
     for i in generator(newlist):
         print(next(a))
         t.sleep(2)
+        
 
 # 출력
 
@@ -64,5 +65,6 @@
 show_fish_movement_comprehension(fish_list)
 print("Using Generator:")
 show_fish_movement_Generator(fish_list)
+
 
 
